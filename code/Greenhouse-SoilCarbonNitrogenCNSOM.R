@@ -15,7 +15,7 @@ library(lmerTest)
 
 #Import data
 
-df_data <- readxl::read_xlsx("C:/Users/Greenhouse/Desktop/Data - R/C & N Greenhouse/C over N R/Carbon/Soil Data Behnaz - C&N.xlsx") %>% 
+df_data <- readxl::read_xlsx("../reclamation_paper/data/Soil Data Behnaz - C&N-fulldata.xlsx") %>% 
   clean_names() %>% 
   mutate(treatment = str_remove(sample, pattern= "^C-" )) %>% 
   mutate(treatment = str_remove(treatment, pattern= "-(H|L)$" )) %>% 
@@ -96,7 +96,6 @@ c1 <- ggplot(df_data, aes(x = compsot, y = c )) +
 c1
 
 
-
 c2 <- df_data %>% 
   filter(compsot == "With C") %>% 
   ggplot(., aes(x = treatment, y = c)) +
@@ -129,7 +128,7 @@ c2
 
 carbon <- c1 + c2 +  plot_layout(guides = 'collect')
 
-ggsave(carbon, filename = file.path("C:/Users/Greenhouse/Desktop/TC.jpg"),
+ggsave(carbon, filename = file.path("../reclamation_paper/plot/total_c.jpg"),
        width = 14, height = 6, units = "in", dpi = 400)
 
 
