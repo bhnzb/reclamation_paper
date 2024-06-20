@@ -5,4 +5,4 @@ Codes and data for the mine reclamation manuscript. The repository has the follo
 
 * plot - It contains all plots used in the manuscript.
 
-* stats - It contains all codes for statistics used in the manuscript.
+* code - It contains all codes for statistics used in the manuscript.
