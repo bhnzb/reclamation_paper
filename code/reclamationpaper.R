@@ -15,7 +15,7 @@ library(lmerTest)
 
 #Import data
 
-df_data <- readxl::read_xlsx("../reclamation_paper/data/Soil Data Behnaz - C&N-fulldata.xlsx") %>% 
+df_data <- readxl::read_xlsx("../reclamation_paper/data/1.soilcn.xlsx") %>% 
   clean_names() %>% 
   mutate(treatment = str_remove(sample, pattern= "^C-" )) %>% 
   mutate(treatment = str_remove(treatment, pattern= "-(H|L)$" )) %>% 
@@ -180,7 +180,7 @@ n2 <- df_data %>%
 
 nitrogen <- n1 + n2 +  plot_layout(guides = 'collect')
 
-ggsave(nitrogen, filename = file.path("C:/Users/Greenhouse/Desktop/TN.jpg"),
+ggsave(nitrogen, filename = file.path("../reclamation_paper/plot/total_n.jpg"),
        width = 14, height = 6, units = "in", dpi = 400)
 
 #################################### Plot CN ##########################
@@ -245,13 +245,13 @@ cn2
 
 cn3 <- cn1 + cn2 +  plot_layout(guides = 'collect')
 
-ggsave(cn3, filename = file.path("C:/Users/Greenhouse/Desktop/cCCng1.jpg"),
+ggsave(cn3, filename = file.path("../reclamation_paper/plot/total_cn.jpg"),
        width = 16, height = 6, units = "in", dpi = 400)
 
 ####################################### SOM ###############################
 #Open directory first
 
-df_data <- read_excel("C:/Users/Greenhouse/Desktop/Data - R/Organic Matter/Soil OM -Greenhouse (1).xlsx") %>%
+df_data <- read_excel("../reclamation_paper/data/2.soilom.xlsx") %>%
   mutate(amendment_treatment = as.factor(amendment_treatment),
          compost = as.factor(compost))%>%
   clean_names()
@@ -331,7 +331,7 @@ sm2
 
 OMG <- sm1 + sm2 +  plot_layout(guides = 'collect')
 
-ggsave(OMG, filename = file.path("C:/Users/Greenhouse/Desktop/OMG.jpg"),
+ggsave(OMG, filename = file.path("../reclamation_paper/plot/soil_om.jpg"),
        width = 14, height = 6, units = "in", dpi = 1200)
 
 ############################## BIOMASS #######################################
@@ -347,7 +347,7 @@ library(ggpubr)
 library(patchwork)
 
 #Import data and adjust names
-df_data <- readxl::read_xlsx("C:/Users/Greenhouse/Desktop/Data - R/Biomass - SUM- greenhouse/Soil Data Behnaz - SUM1.xlsx") %>% 
+df_data <- readxl::read_xlsx("../reclamation_paper/data/3.biomass.xlsx") %>% 
   clean_names() %>% 
   mutate(treatment = str_remove(sample, pattern= "^C-" )) %>% 
   mutate(treatment = str_remove(treatment, pattern= "-(H|L)$" )) %>% 
@@ -433,7 +433,6 @@ df_data %>%
             shoot = mean(biomass_shoot_mg),
             avgroot = mean(biomass_root_mg))
 
-#############################################################
 
 ################################# main plot##############################
 b1 <- ggplot(df_data, aes(x = compsot, y = total_g )) +
@@ -481,11 +480,8 @@ b2
 
 b3 <- b1 + b2 +  plot_layout(guides = 'collect')
 
-ggsave(b3, filename = file.path("C:/Users/Greenhouse/Desktop/CCTB2.jpg"),
+ggsave(b3, filename = file.path("../reclamation_paper/plot/total_biomass.jpg"),
        width = 14, height = 6, units = "in", dpi = 400)
-
-ggsave(b3, filename = file.path("C:/Users/Greenhouse/Desktop/presentTB2.jpg"),
-       width = 14, height = 4, units = "in", dpi = 1200)
 
 ################################################ SHOOT #######################
 
@@ -522,7 +518,6 @@ bs1 <- ggplot(df_data, aes(x = compsot, y = shoot_g )) +
 bs1
 
 
-
 bs2 <- df_data %>% 
   #filter(compsot == "With C") %>% 
   ggplot(., aes(x = treatment, y = shoot_g)) +
@@ -545,7 +540,7 @@ bs2
 
 bs3 <- bs1 + bs2 +  plot_layout(guides = 'collect')
 
-ggsave(bs3, filename = file.path("C:/Users/Greenhouse/Desktop/CTsh.jpg"),
+ggsave(bs3, filename = file.path("../reclamation_paper/plot/shoot_biomass.jpg"),
        width = 14, height =4 , units = "in", dpi = 400)
 
 
@@ -595,7 +590,7 @@ br2
 
 br3 <- br1 + br2 +  plot_layout(guides = 'collect')
 
-ggsave(br3, filename = file.path("C:/Users/Greenhouse/Desktop/CTRg.jpg"),
+ggsave(br3, filename = file.path("../reclamation_paper/plot/root_biomass.jpg"),
        width = 14, height = 4, units = "in", dpi = 400)
 
 
@@ -606,7 +601,7 @@ library(janitor)
 library(ggpubr)    
 library(patchwork)
 
-df_data <- readxl::read_xlsx("C:/Users/Greenhouse/Desktop/Data - R/1.Greenhouse R/New Analysis biomass- carbon/Soil Data Behnaz - C&N OLD.xlsx") %>% 
+df_data <- readxl::read_xlsx("../reclamation_paper/data/4.rootshoot.xlsx") %>% 
   clean_names() %>% 
   mutate(amendment_treatment = str_remove(amendment_treatment, pattern= "^C-" )) %>% 
   mutate(amendment_treatment = str_remove(amendment_treatment, pattern= "-(H|L)$" ),
@@ -643,7 +638,7 @@ df_data %>%
 
 ################################## Compost main plot #####################
 
-df_data <- readxl::read_xlsx("C:/Users/Greenhouse/Desktop/Data - R/Biomass - SUM- greenhouse/Soil Data Behnaz - SUM1.xlsx") %>% 
+df_data <- readxl::read_xlsx("../reclamation_paper/data/3.biomass.xlsx") %>% 
   clean_names() %>% 
   mutate(treatment = str_remove(sample, pattern= "^C-" )) %>% 
   mutate(treatment = str_remove(treatment, pattern= "-(H|L)$" )) %>% 
@@ -692,12 +687,12 @@ p2
 
 rs <- p1 + p2 +  plot_layout(guides = 'collect')
 
-ggsave(rs, filename = file.path("C:/Users/Greenhouse/Desktop/rs.jpg"),
+ggsave(rs, filename = file.path("../reclamation_paper/plot/rs.jpg"),
        width = 14, height = 6, units = "in", dpi = 1200)
 
 ########################################### Amendments Plot##################
 
-df_data <- readxl::read_xlsx("C:/Users/Greenhouse/Desktop/Data - R/Biomass - SUM- greenhouse/Soil Data Behnaz - SUM1.xlsx") %>% 
+df_data <- readxl::read_xlsx("../reclamation_paper/data/3.biomass.xlsx") %>% 
   clean_names() %>% 
   mutate(treatment = str_remove(sample, pattern= "^C-" )) %>% 
   mutate(treatment = str_remove(treatment, pattern= "-(H|L)$" )) %>% 
@@ -740,7 +735,7 @@ geom_hline(yintercept = 1, linetype = "dotdash")+
 
 p1
 
-ggsave(p1, filename = file.path("C:/Users/Greenhouse/Desktop/amendment rootshoot.jpg"),
+ggsave(p1, filename = file.path("../reclamation_paper/plot/amend_rs.jpg"),
        width = 12, height = 6, units = "in", dpi = 1200)
 
 
