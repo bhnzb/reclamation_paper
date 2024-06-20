@@ -128,7 +128,7 @@ c2
 
 carbon <- c1 + c2 +  plot_layout(guides = 'collect')
 
-ggsave(carbon, filename = file.path("../reclamation_paper/plot/total_c.jpg"),
+ggsave(carbon, filename = file.path("../reclamation_paper/plot/1.total_c.jpg"),
        width = 14, height = 6, units = "in", dpi = 400)
 
 
@@ -180,7 +180,7 @@ n2 <- df_data %>%
 
 nitrogen <- n1 + n2 +  plot_layout(guides = 'collect')
 
-ggsave(nitrogen, filename = file.path("../reclamation_paper/plot/total_n.jpg"),
+ggsave(nitrogen, filename = file.path("../reclamation_paper/plot/2.total_n.jpg"),
        width = 14, height = 6, units = "in", dpi = 400)
 
 #################################### Plot CN ##########################
@@ -245,7 +245,7 @@ cn2
 
 cn3 <- cn1 + cn2 +  plot_layout(guides = 'collect')
 
-ggsave(cn3, filename = file.path("../reclamation_paper/plot/total_cn.jpg"),
+ggsave(cn3, filename = file.path("../reclamation_paper/plot/3.total_cn.jpg"),
        width = 16, height = 6, units = "in", dpi = 400)
 
 ####################################### SOM ###############################
@@ -331,7 +331,7 @@ sm2
 
 OMG <- sm1 + sm2 +  plot_layout(guides = 'collect')
 
-ggsave(OMG, filename = file.path("../reclamation_paper/plot/soil_om.jpg"),
+ggsave(OMG, filename = file.path("../reclamation_paper/plot/4.soil_om.jpg"),
        width = 14, height = 6, units = "in", dpi = 1200)
 
 ############################## BIOMASS #######################################
@@ -480,7 +480,7 @@ b2
 
 b3 <- b1 + b2 +  plot_layout(guides = 'collect')
 
-ggsave(b3, filename = file.path("../reclamation_paper/plot/total_biomass.jpg"),
+ggsave(b3, filename = file.path("../reclamation_paper/plot/5.total_biomass.jpg"),
        width = 14, height = 6, units = "in", dpi = 400)
 
 ################################################ SHOOT #######################
@@ -540,7 +540,7 @@ bs2
 
 bs3 <- bs1 + bs2 +  plot_layout(guides = 'collect')
 
-ggsave(bs3, filename = file.path("../reclamation_paper/plot/shoot_biomass.jpg"),
+ggsave(bs3, filename = file.path("../reclamation_paper/plot/6.shoot_biomass.jpg"),
        width = 14, height =4 , units = "in", dpi = 400)
 
 
@@ -590,7 +590,7 @@ br2
 
 br3 <- br1 + br2 +  plot_layout(guides = 'collect')
 
-ggsave(br3, filename = file.path("../reclamation_paper/plot/root_biomass.jpg"),
+ggsave(br3, filename = file.path("../reclamation_paper/plot/7.root_biomass.jpg"),
        width = 14, height = 4, units = "in", dpi = 400)
 
 
@@ -632,7 +632,7 @@ posthoc <- emmeans(m02, list(pairwise ~ amendment_treatment*compsot)) %>%
 plot(posthoc)+ theme_bw()
 
 #### mean value
-df_data %>% 
+df_cn %>% 
   group_by(compsot) %>% 
   summarise(avgC = mean(root_shoot))
 
@@ -687,8 +687,8 @@ p2
 
 rs <- p1 + p2 +  plot_layout(guides = 'collect')
 
-ggsave(rs, filename = file.path("../reclamation_paper/plot/rs.jpg"),
-       width = 14, height = 6, units = "in", dpi = 1200)
+ggsave(rs, filename = file.path("../reclamation_paper/plot/8.rs.jpg"),
+       width = 14, height = 6, units = "in", dpi = 400)
 
 ########################################### Amendments Plot##################
 
@@ -735,7 +735,7 @@ geom_hline(yintercept = 1, linetype = "dotdash")+
 
 p1
 
-ggsave(p1, filename = file.path("../reclamation_paper/plot/amend_rs.jpg"),
-       width = 12, height = 6, units = "in", dpi = 1200)
+ggsave(p1, filename = file.path("../reclamation_paper/plot/9.amend_rs.jpg"),
+       width = 12, height = 6, units = "in", dpi = 400)
 
 
