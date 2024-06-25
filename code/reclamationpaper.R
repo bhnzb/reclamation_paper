@@ -367,14 +367,14 @@ mod6<- lm(sqrt(total_biomass) ~ treatment*compsot,
 
 AIC(mod, mod6) 
 
-anova(mod)
+anova(mod6)
 
-hist(resid(mod)) 
-plot(mod) 
-shapiro.test(resid(mod)) 
+hist(resid(mod6)) 
+plot(mod6) 
+shapiro.test(resid(mod6)) 
 
 df_data %>%
-  levene_test(sqrt(total_biomass) ~ treatment*compsot*ratio)
+  levene_test(sqrt(total_biomass) ~ treatment*compsot)
 
 
 ######### Shoot Biomass
@@ -384,34 +384,34 @@ mod5 <- (lm(sqrt(biomass_shoot_mg) ~ treatment*compsot,
             data = df_data))
 
 AIC (mod0, mod5)
-anova(mod0)
+anova(mod5)
 
 
-hist(resid(mod0)) 
-plot(mod0) 
-shapiro.test(resid(mod0)) 
+hist(resid(mod5)) 
+plot(mod5) 
+shapiro.test(resid(mod5)) 
 
 df_data %>%
-  levene_test(sqrt(biomass_shoot_mg) ~ treatment*compsot*ratio)
+  levene_test(sqrt(biomass_shoot_mg) ~ treatment*compsot)
 
 
 ######### Root Biomass
-mod01 <- (lm(sqrt(biomass_root_mg) ~ treatment*compsot*ratio,
+mod01 <- (lm(log(biomass_root_mg) ~ treatment*compsot*ratio,
            data = df_data))
 
-mod7 <- (lm(sqrt(biomass_root_mg) ~ treatment*compsot,
+mod7 <- (lm(log(biomass_root_mg) ~ treatment*compsot,
            data = df_data))
 
 AIC (mod01, mod7)
 anova(mod7)
 
 
-hist(resid(mod01)) 
-plot(mod01) 
-shapiro.test(resid(mod01)) 
+hist(resid(mod7)) 
+plot(mod7) 
+shapiro.test(resid(mod7)) 
 
 df_data %>%
-  levene_test(sqrt(biomass_root_mg) ~ treatment*compsot*ratio)
+  levene_test(log(biomass_root_mg) ~ treatment*compsot)
 
 ################ mean values ###############
 df_data %>% 
